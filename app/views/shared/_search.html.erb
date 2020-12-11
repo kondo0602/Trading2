@@ -1,0 +1,10 @@
+<div class="col-md-6 col-md-offset-3 search">
+  <%= form_with url:search_path , method: :get, local: true do |f| %>
+    <%= f.text_field :search, value: @words, placeholder: "キーワードを入力" %>
+    <%= f.submit '検索する', :name => nil %>
+    <%= f.label :or_search, class: "checkbox inline" do %>
+       <%= f.check_box :or_search %>
+       <span>OR検索</span>
+    <% end %>
+  <% end %>
+</div>

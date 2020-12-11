@@ -1,0 +1,21 @@
+<% provide(:title, '下書き一覧') %>
+<h1>下書き一覧</h1>
+
+<div class="row">
+  <aside class="col-md-4">
+    <%= render 'shared/user_sidebar' %>
+  </aside>
+
+  <div class="col-md-8">
+
+<ul class="itemindex">
+  <% if current_user.liked_items.any? %>
+    <%= will_paginate @items %>
+
+    <%= render @items %>
+
+    <%= will_paginate @items %>
+  <% else %>
+    <p>まだお気に入りしている商品はありません。</p>
+  <% end %>
+</ul>

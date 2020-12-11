@@ -1,0 +1,17 @@
+<% provide(:title, 'トップページ') %>
+
+<%= render 'shared/search' %>
+
+<%= render 'sidebar' %>
+
+<div class="col-md-8">
+  <%= will_paginate %>
+    <% if @items == [] %>
+      検索結果がありません。
+    <% else %>
+      <ul class="itemindex">
+        <%= render @items %>
+      </ul>
+    <% end %>
+  <%= will_paginate %>
+</div>

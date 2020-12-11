@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+   <%= render 'layouts/omajinai' %>
+   <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%# フラッシュに格納されているメッセージをイテレートして表示する　%>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
+    <%#= 開発環境の場合デバッグ情報を表示する %>
+    <%= debug(params) if Rails.env.development? %>
+  </body>
+</html>

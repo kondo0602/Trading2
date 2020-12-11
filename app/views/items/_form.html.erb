@@ -1,0 +1,12 @@
+<%= form_with(model: @item, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: @item %>
+
+  <%= f.label :商品名 %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :商品の説明 %>
+  <%= f.text_field :content, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+
+<% end %>

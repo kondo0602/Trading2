@@ -1,0 +1,27 @@
+<section class="user_image">
+    <%# userヘルパーに記載のgravatarメソッドで渡したidに紐づく画像を持ってくる %>
+    <%= gravatar_for @user, size: 200 %><br>
+</section>
+<section>
+    <p><%= @user.name %></p>
+    <% if logged_in? %>
+      <% if current_user == @user %>
+        <p><%= link_to "いいねした商品一覧", item_likes_path(@items) %></p>
+        <p><%= link_to "下書き一覧", shitagaki_path %></p>
+        <p><%= link_to "出品する", new_item_path %></p>
+        <p><%= link_to "ユーザ情報の編集", edit_user_path(@user) %></p>
+        <p><%= link_to "DM一覧", rooms_path %></p>
+      <% else %>
+        <% if @isRoom == true %>
+          <p><a href="/rooms/<%= @roomId %>">DM画面へ</a>
+        <% else %>
+          <%= form_with(model: @room, local: true) do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value=> @user.id %>
+            <% end %>
+            <%= f.submit "DMを送る" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+</section>
