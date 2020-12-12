@@ -24,6 +24,6 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
-
+  #魔法
   has_secure_password
 end
