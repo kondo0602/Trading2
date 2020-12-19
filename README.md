@@ -1,20 +1,19 @@
 # TRADING
 
-http://18.182.80.77/
-
 このアプリケーションはユーザ同士のスニーカーのトレードをサポートします！
+
+http://ec2-18-182-80-77.ap-northeast-1.compute.amazonaws.com/
 
 <img width="1680" alt="スクリーンショット 2020-12-19 16 25 43" src="https://user-images.githubusercontent.com/73473550/102683918-9962c480-4217-11eb-9a0e-4b3cde97e1fb.png">
 
 
-# 開発環境
-
+# 使用技術
 - Ruby 2.6.6
 - Rails 6.0.3
-- 管理ユーザログイン機能
-- 商品一覧表示機能
+- MySQL
+- AWS
 
-# 実装機能
+# 実装機能(使用ライブラリ)
 - ユーザログイン機能
 - ユーザ編集・削除機能
 - 管理ユーザログイン機能
