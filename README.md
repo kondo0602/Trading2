@@ -10,8 +10,8 @@ http://ec2-18-182-80-77.ap-northeast-1.compute.amazonaws.com/
 # 使用技術
 - Ruby 2.6.6
 - Rails 6.0.3
-- MySQL　8.0
-- AWS
+- MySQL 8.0
+- AWS(VPC/EC2)
 
 # 実装機能(使用ライブラリ)
 - ユーザログイン機能
