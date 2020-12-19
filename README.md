@@ -1,24 +1,27 @@
-# README
+# TRADING
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+http://18.182.80.77/
 
-Things you may want to cover:
+このアプリケーションはユーザ同士のスニーカーのトレードをサポートします！
 
-* Ruby version
+# 開発環境
+- Rails 6.0.3
+- 管理ユーザログイン機能
+- 商品一覧表示機能
 
-* System dependencies
+# 実装機能
+- ユーザログイン機能
+- ユーザ編集・削除機能
+- 管理ユーザログイン機能
+- 商品一覧表示機能
+- 商品詳細表示機能
+- 商品投稿機能
+- 商品の下書き機能
+- 商品編集・削除機能
+- 商品に対するお気に入り・コメント機能
+- ユーザ間でのメッセージのやり取り
+- 商品検索機能（AND検索/OR検索/商品の条件による検索）
 
-* Configuration
+# DB構造図
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 作者
