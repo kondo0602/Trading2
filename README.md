@@ -10,7 +10,7 @@ http://ec2-18-182-80-77.ap-northeast-1.compute.amazonaws.com/
 # 使用技術
 - Ruby 2.6.6
 - Rails 6.0.3
-- MySQL
+- MySQL　8.0
 - AWS
 
 # 実装機能(使用ライブラリ)
@@ -34,8 +34,8 @@ http://ec2-18-182-80-77.ap-northeast-1.compute.amazonaws.com/
 ![E-R](https://user-images.githubusercontent.com/73473550/102683720-653ad400-4216-11eb-9fcc-d30b13072d8f.png)
 
 # 作者
-Qiita：https://qiita.com/kondo0602
-Twitter：https://twitter.com/kondo0602_t
+- Qiita：https://qiita.com/kondo0602
+- Twitter：https://twitter.com/kondo0602_t
 
 
 
