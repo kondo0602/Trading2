@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: shun
   password: Urien8363
-  socket: /tmp/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
 
 development:
   <<: *default
@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: Trading2_production
-  username: Trading2
-  password: <%= ENV['TRADING2_DATABASE_PASSWORD'] %>
+  username: root
+  password: Urien8363!
