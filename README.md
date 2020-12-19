@@ -36,6 +36,3 @@ http://ec2-18-182-80-77.ap-northeast-1.compute.amazonaws.com/
 # 作者
 - Qiita：https://qiita.com/kondo0602
 - Twitter：https://twitter.com/kondo0602_t
-
-
-
