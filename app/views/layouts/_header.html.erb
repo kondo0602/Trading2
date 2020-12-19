@@ -7,7 +7,6 @@
           <li><%= link_to "出品", new_item_path %></li>
           <li><%= link_to "ヘルプ", help_path %></li>
           <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
-          <li><%= button_to "ログアウト", logout_path, :method => "delete" %></li>
         <% else %>
           <li><%= link_to "新規登録", signup_path %></li>
           <li><%= link_to "ヘルプ", help_path %></li>
