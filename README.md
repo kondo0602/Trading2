@@ -19,14 +19,21 @@ http://18.182.80.77/
 - 商品一覧表示機能
 - 商品詳細表示機能
 - 商品投稿機能
+- 画像アップロード機能（active_storage）
 - 商品の下書き機能
 - 商品編集・削除機能
 - 商品に対するお気に入り・コメント機能
 - ユーザ間でのメッセージのやり取り
 - 商品検索機能（AND検索/OR検索/商品の条件による検索）
+- 自動テスト
+
 
 # DB構造図
 ![E-R](https://user-images.githubusercontent.com/73473550/102683720-653ad400-4216-11eb-9fcc-d30b13072d8f.png)
 
-
 # 作者
+Qiita：https://qiita.com/kondo0602
+Twitter：https://twitter.com/kondo0602_t
+
+
+
