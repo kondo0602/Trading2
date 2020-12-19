@@ -23,5 +23,7 @@ http://18.182.80.77/
 - 商品検索機能（AND検索/OR検索/商品の条件による検索）
 
 # DB構造図
+![E-R](https://user-images.githubusercontent.com/73473550/102683720-653ad400-4216-11eb-9fcc-d30b13072d8f.png)
+
 
 # 作者
