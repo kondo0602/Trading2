@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: %i[edit update destroy]
+  before_action :correct_user, only: %i[edit update]
   before_action :admin_user, only: :destroy
 
   def new
@@ -13,27 +13,27 @@ class UsersController < ApplicationController
                  .where(shitagaki: '0')
                  .paginate(page: params[:page])
     if logged_in?
-      #今操作しているユーザ
+      # 今操作しているユーザ
       @currentUserEntry = Entry.where(user_id: current_user.id)
-      #詳細ページの持ち主であるユーザ
+      # 詳細ページの持ち主であるユーザ
       @userEntry = Entry.where(user_id: @user.id)
       @isRoom == false
-      #操作しているユーザ自身のユーザ詳細ページである場合、ルームがあるかどうかの判定だけ行う
+      # 操作しているユーザ自身のユーザ詳細ページである場合、ルームがあるかどうかの判定だけ行う
       if @user.id == current_user.id
         @isRoom = true if @currentUserEntry
-      #操作しているユーザ以外のユーザ詳細ページであればメッセージを送るための情報を渡す
+      # 操作しているユーザ以外のユーザ詳細ページであればメッセージを送るための情報を渡す
       else
         @currentUserEntry.each do |cu|
           @userEntry.each do |u|
-            #操作しているユーザとそのページの持ち主のユーザのルームがあれば
-            if cu.room_id == u.room_id then
+            # 操作しているユーザとそのページの持ち主のユーザのルームがあれば
+            if cu.room_id == u.room_id
               @isRoom = true
               @roomId = cu.room_id
             end
           end
         end
         if @isRoom
-        #まだその二人の間にルームがなければ空のルームとエントリを作成する
+        # まだその二人の間にルームがなければ空のルームとエントリを作成する
         else
           @room = Room.new
           @entry = Entry.new
@@ -45,11 +45,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to Trading!"
+      flash[:success] = 'Welcome to Trading!'
       login @user
       redirect_to @user
     else
-    render 'new'
+      render 'new'
     end
   end
 
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "ユーザ情報の編集が完了しました"
+      flash[:success] = 'ユーザ情報の編集が完了しました'
       redirect_to @user
     else
       render 'edit'
@@ -69,26 +69,27 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = 'User deleted'
     redirect_to root_path
   end
 
   private
-    #strong parametersを使用するための外部メソッド
-    def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
-    end
 
-    def correct_user
-      @user = User.find(params[:id])
-      unless current_user?(@user)
-        flash[:danger] = "そのページに対する編集権限がありません"
-        redirect_to root_url
-      end
-    end
+  # strong parametersを使用するための外部メソッド
+  def user_params
+    params.require(:user).permit(:name, :email, :password,
+                                 :password_confirmation)
+  end
 
-    def admin_user
-      redirect_to root_url unless current_user.admin?
+  def correct_user
+    @user = User.find(params[:id])
+    unless current_user?(@user)
+      flash[:danger] = 'そのページに対する編集権限がありません'
+      redirect_to root_url
     end
+  end
+
+  def admin_user
+    redirect_to root_url unless current_user.admin?
+  end
 end

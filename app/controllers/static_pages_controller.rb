@@ -3,9 +3,7 @@ class StaticPagesController < ApplicationController
     @item = current_user.items.build if logged_in?
   end
 
-  def help
-  end
+  def help; end
 
-  def about
-  end
+  def about; end
 end

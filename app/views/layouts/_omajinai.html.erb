@@ -1,10 +1,8 @@
 <%# コンテンツセキュリティポリシーの実装 %>
-<%= csrf_meta_tags %>
-<%# クロスサイトリクエストフォージェリの防御 %>
-<%= csp_meta_tag %>
-<%# cssを取り込む %>
-<%# stylesheet_link_tagメソッドに引数として文字列とハッシュを与える %>
-<%= stylesheet_link_tag    'application', { media: 'all',
-                           'data-turbolinks-track': 'reload' } %>
-<%= javascript_pack_tag    'application',
-                           'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+  <%# クロスサイトリクエストフォージェリの防御 %>
+    <%= csp_meta_tag %>
+    <%# cssを取り込む %>
+      <%# stylesheet_link_tagメソッドに引数として文字列とハッシュを与える %>
+        <%= stylesheet_link_tag 'application', { media: 'all', 'data-turbolinks-track': 'reload' } %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
