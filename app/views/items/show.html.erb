@@ -48,8 +48,8 @@
 
     <% if logged_in? %>
       <% if current_user.id == @item.user_id %>
-        <%= link_to "編集する", edit_item_path(@item), class: "btn btn-primary" %><br>
-         <%= link_to "この商品を削除する", @item, method: :delete,
+        <%= button_to "この商品を編集する", edit_item_path(@item), class: "btn btn-primary" %><br>
+         <%= button_to "この商品を削除する", @item, method: :delete,
               class: "btn btn-danger" ,
               data: { confirm: "本当に削除してよろしいですか?" } %>
       <% end %>
