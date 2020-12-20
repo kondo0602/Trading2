@@ -15,7 +15,7 @@ describe 'ユーザ管理機能', type: :system do
     end
 
     context '必要な情報が全て入力されている場合' do
-      it '登録したユーザのユーザ詳細ページに遷移し、適切なfalshが表示されていること' do
+      it '登録したユーザのユーザ詳細ページに遷移し、適切なflashが表示されていること' do
         click_on 'ユーザ登録'
         #ログインしているかどうかのテストも必要か
         expect(current_path).to eq user_path(User.find_by(email: 'a@example.com'))
