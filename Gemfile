@@ -10,6 +10,7 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'faker', '2.1.2'
 gem 'image_processing', '1.9.3'
+# AcitveStrageのvariant（画像サイズ調整）メソッドが使用できるようになる
 gem 'mini_magick', '4.9.5'
 gem 'rails', '~> 6.0.3'
 gem 'will_paginate', '3.1.8'

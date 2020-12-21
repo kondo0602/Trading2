@@ -23,9 +23,4 @@ class Item < ApplicationRecord
       Item.all
     end
   end
-
-  # 表示用のリサイズ済み画像を返す
-  def display_image
-    image.variant(resize: '300x300').processed
-  end
 end

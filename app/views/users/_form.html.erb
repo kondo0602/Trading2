@@ -1,6 +1,9 @@
 <%= form_with(model: @user, local: true) do |f| %>
 <%= render 'shared/error_messages', object: @user %>
 
+<%= f.label :プロフィール画像 %>
+<%= f.file_field :image %>
+
 <%= f.label :ユーザ名 %>
 <%= f.text_field :name, class: 'form-control' %>
 

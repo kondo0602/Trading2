@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :dms, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_one_attached :image
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
