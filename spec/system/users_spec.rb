@@ -1,23 +1,23 @@
 require 'rails_helper'
 
 describe 'ユーザ管理機能', type: :system do
-  let(:user_a) {create(:user)}
-  let(:user_b) {create(:user)}
-  let!(:item) {create(:item, user: user_a)}
+  let(:user_a) { create(:user) }
+  let(:user_b) { create(:user) }
+  let!(:item) { create(:item, user: user_a) }
 
   describe 'ユーザ新規作成機能' do
     before do
       visit new_user_path
-      fill_in "user[name]", with: 'test'
-      fill_in "user[email]", with: 'a@example.com'
-      fill_in "user[password]", with: 'password'
-      fill_in "user[password_confirmation]", with: 'password'
+      fill_in 'user[name]', with: 'test'
+      fill_in 'user[email]', with: 'a@example.com'
+      fill_in 'user[password]', with: 'password'
+      fill_in 'user[password_confirmation]', with: 'password'
     end
 
     context '必要な情報が全て入力されている場合' do
       it '登録したユーザのユーザ詳細ページに遷移し、適切なflashが表示されていること' do
         click_on 'ユーザ登録'
-        #ログインしているかどうかのテストも必要か
+        # ログインしているかどうかのテストも必要か
         expect(current_path).to eq user_path(User.find_by(email: 'a@example.com'))
         expect(page).to have_content 'Welcome to Trading!'
       end
@@ -25,7 +25,7 @@ describe 'ユーザ管理機能', type: :system do
 
     context '名前が入力されていない場合' do
       it 'ユーザ登録ページにリダイレクトされ、適切なflashが表示されること' do
-        fill_in "user[name]", with: ''
+        fill_in 'user[name]', with: ''
         click_on 'ユーザ登録'
         expect(current_path).to eq users_path
         expect(page).to have_content "Name can't be blank"
@@ -34,7 +34,7 @@ describe 'ユーザ管理機能', type: :system do
 
     context 'メールアドレスが入力されていない場合' do
       it 'ユーザ登録ページにリダイレクトされ、適切なflashが表示されること' do
-        fill_in "user[email]", with: ''
+        fill_in 'user[email]', with: ''
         click_on 'ユーザ登録'
         expect(current_path).to eq users_path
         expect(page).to have_content "Email can't be blank"
@@ -43,7 +43,7 @@ describe 'ユーザ管理機能', type: :system do
 
     context 'パスワードが入力されていない場合' do
       it 'ユーザ登録ページにリダイレクトされ、適切なflashが表示されること' do
-        fill_in "user[password]", with: ''
+        fill_in 'user[password]', with: ''
         click_on 'ユーザ登録'
         expect(current_path).to eq users_path
         expect(page).to have_content "Password can't be blank"
@@ -52,7 +52,7 @@ describe 'ユーザ管理機能', type: :system do
 
     context 'パスワード再確認が入力されていない場合' do
       it 'ユーザ登録ページにリダイレクトされ、適切なflashが表示されること' do
-        fill_in "user[password_confirmation]", with: ''
+        fill_in 'user[password_confirmation]', with: ''
         click_on 'ユーザ登録'
         expect(current_path).to eq users_path
         expect(page).to have_content "Password confirmation doesn't match Password"
@@ -63,8 +63,8 @@ describe 'ユーザ管理機能', type: :system do
   describe 'ユーザ詳細画面表示機能' do
     before do
       visit login_path
-      fill_in "session[email]", with: login_user.email
-      fill_in "session[password]", with: 'password'
+      fill_in 'session[email]', with: login_user.email
+      fill_in 'session[password]', with: 'password'
       click_on 'ログインする'
     end
 

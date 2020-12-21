@@ -1,23 +1,15 @@
 <div class="col-md-4 sidebar">
   <%= form_with url:search_path , method: :get, local: true do |f| %>
-    <h2>商品を絞りこむ</h2>
-    <p>キーワードから探す</p>
-    <%= f.text_field :search, value: @words, placeholder: "キーワードを入力してください" %>
-    <p>ブランドから探す</p>
-    <%= f.text_field :brand, placeholder: "商品のブランドを入力してください" %>
-    <p>サイズから探す</p>
-    <%= f.select :size, [["24cm以下", "24cm以下"],["24.5cm", "24.5cm"],["25cm", "25cm"],
-                            ["25.5cm", "25.5cm"],["26cm", "26cm"],["26.5cm", "26.5cm"],
-                            ["27cm", "27cm"],["27.5cm", "27.5cm"],["28cm", "28cm"],
-                            ["28.5cm", "28.5cm"],["29cm", "29cm"],["29cm以上", "29cm以上"],],
-                            include_blank: "サイズを選択して下さい" %>
-    <p>商品の状態から探す</p>
-    <%= f.select :status, [["未使用新品", "未使用新品"],
-                            ["ほとんど使用していない", "ほとんど使用していない"],
-                            ["やや使用感あり", "やや使用感あり"],
-                            ["使用感あり", "使用感あり"],
-                            ["ジャンク品", "ジャンク品"]],
-                            include_blank: "商品の状態を選択して下さい" %>
-    <%= f.submit "商品を絞り込む", class: "btn btn-primary" %>
-  <% end %>
+  <h2>商品を絞りこむ</h2>
+  <p>キーワードから探す</p>
+  <%= f.text_field :search, value: @words, placeholder: "キーワードを入力してください" %>
+  <p>ブランドから探す</p>
+  <%= f.text_field :brand, placeholder: "商品のブランドを入力してください" %>
+  <p>サイズから探す</p>
+  <%= f.select :size, [["24cm以下", "24cm以下"],["24.5cm", "24.5cm"],["25cm", "25cm"], ["25.5cm", "25.5cm"],["26cm", "26cm"],["26.5cm", "26.5cm"], ["27cm", "27cm"],["27.5cm", "27.5cm"],["28cm", "28cm"], ["28.5cm", "28.5cm"],["29cm", "29cm"],["29cm以上",
+  "29cm以上"],], include_blank: "サイズを選択して下さい" %>
+  <p>商品の状態から探す</p>
+  <%= f.select :status, [["未使用新品", "未使用新品"], ["ほとんど使用していない", "ほとんど使用していない"], ["やや使用感あり", "やや使用感あり"], ["使用感あり", "使用感あり"], ["ジャンク品", "ジャンク品"]], include_blank: "商品の状態を選択して下さい" %>
+  <%= f.submit "商品を絞り込む", class: "btn btn-primary" %>
+<% end %>
 </div>

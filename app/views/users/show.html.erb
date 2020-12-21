@@ -1,19 +1,19 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <%= render 'shared/user_sidebar' %>
-  </aside>
+  <div class="row">
+    <aside class="col-md-4">
+      <%= render 'shared/user_sidebar' %>
+    </aside>
 
-  <div class="col-md-8">
-    <h3><%= @user.name %>が出品した商品一覧 (<%= @user.items.count %>)</h3>
-    <% if @user.items.any? %>
-      <%= will_paginate @items %>
-      <ol class="items">
-        <%= render @items %>
-      </ol>
-      <%= will_paginate @items %>
-    <% else %>
-      <p>まだ出品している商品がありません。</p>
-    <% end %>
+    <div class="col-md-8">
+      <h3><%= @user.name %>が出品した商品一覧 (<%= @user.items.count %>)</h3>
+      <% if @user.items.any? %>
+        <%= will_paginate @items %>
+        <ol class="items">
+          <%= render @items %>
+        </ol>
+        <%= will_paginate @items %>
+      <% else %>
+        <p>まだ出品している商品がありません。</p>
+      <% end %>
+    </div>
   </div>
-</div>

@@ -1,6 +1,6 @@
 <% provide(:title, @item.name) %>
-<h1>商品詳細</h1>
-<div class="col-md-6 col-md-offset-3">
+  <h1>商品詳細</h1>
+  <div class="col-md-6 col-md-offset-3">
 
     <h1><%= "商品名:#{@item.name}" %></h1>
 
@@ -12,20 +12,55 @@
       <% end %>
 
       <table>
-        <tr><td> 出品者 </td><td> <%= link_to @user.name, user_path(@user) %> </td></tr>
-        <tr><td> 商品の説明 </td><td> <%=@item.content%> </td></tr>
-        <tr><td> ブランド </td><td> <%=@item.brand%> </td></tr>
-        <tr><td> サイズ </td><td> <%=@item.size%> </td></tr>
-        <tr><td> 状態 </td><td> <%=@item.status%> </td></tr>
+        <tr>
+          <td>
+            出品者
+          </td>
+          <td>
+            <%= link_to @user.name, user_path(@user) %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            商品の説明
+          </td>
+          <td>
+            <%=@item.content%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            ブランド
+          </td>
+          <td>
+            <%=@item.brand%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            サイズ
+          </td>
+          <td>
+            <%=@item.size%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            状態
+          </td>
+          <td>
+            <%=@item.status%>
+          </td>
+        </tr>
       </table>
     </center>
 
-    <h3>いいね件数: <%= @item.likes.count %></h3>
+    <h3>いいね件数:
+      <%= @item.likes.count %></h3>
 
     <% if current_user %>
       <% if current_user.already_liked?(@item) %>
-        <%= button_to 'いいねを取り消す', item_like_path(@item), method: :delete,
-                                        class: "btn btn-danger"  %>
+        <%= button_to 'いいねを取り消す', item_like_path(@item), method: :delete, class: "btn btn-danger" %>
       <% else %>
         <%= button_to 'いいね', item_likes_path(@item), class: "btn btn-primary" %>
       <% end %>
@@ -37,21 +72,19 @@
     </div>
 
     <% if current_user %>
-        <%= form_with(model: [@item, @comment], local: true) do |f| %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.text_area :content, placeholder: "コメントを入力してください" %>
-          <%= f.submit "コメントする", class: "btn btn-primary" %>
-        <% end %>
-    <% else %>
-      <%= link_to "コメントするにはログインが必要です", login_path %>
+      <%= form_with(model: [@item, @comment], local: true) do |f| %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.text_area :content, placeholder: "コメントを入力してください" %>
+      <%= f.submit "コメントする", class: "btn btn-primary" %>
     <% end %>
+  <% else %>
+    <%= link_to "コメントするにはログインが必要です", login_path %>
+  <% end %>
 
-    <% if logged_in? %>
-      <% if current_user.id == @item.user_id %>
-        <%= button_to "この商品を編集する", edit_item_path(@item), class: "btn btn-primary" %><br>
-         <%= button_to "この商品を削除する", @item, method: :delete,
-              class: "btn btn-danger" ,
-              data: { confirm: "本当に削除してよろしいですか?" } %>
-      <% end %>
+  <% if logged_in? %>
+    <% if current_user.id == @item.user_id %>
+      <%= button_to "この商品を編集する", edit_item_path(@item), class: "btn btn-primary" %><br>
+      <%= button_to "この商品を削除する", @item, method: :delete, class: "btn btn-danger" , data: { confirm: "本当に削除してよろしいですか?" } %>
     <% end %>
+  <% end %>
 </div>

@@ -2,26 +2,30 @@
 
 <h4>参加者</h4>
 <% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%>さん</a></strong></h5>
+  <h5>
+    <strong>
+      <a href="/users/<%= e.user.id %>"><%= e.user.name%>さん</a>
+    </strong>
+  </h5>
 <% end %>
 
 <hr>
 <% if @dms %>
   <% @dms.each do |dm| %>
-  <% user = User.find(dm.user_id) %>
-  <%= gravatar_for user, size: 50 %>
-  <%= link_to user.name, user_path(User.find(dm.user_id)) %><br>
-    <strong><%= dm.content %></strong><br>
-    <span>
-      <%= dm.created_at.strftime("%Y年%m月%d日 %H:%M") %>
-    </span>
-    <hr>
+    <% user = User.find(dm.user_id) %>
+      <%= gravatar_for user, size: 50 %>
+      <%= link_to user.name, user_path(User.find(dm.user_id)) %><br>
+      <strong><%= dm.content %></strong><br>
+      <span>
+        <%= dm.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+      </span>
+      <hr>
+    <% end %>
+  <% else %>
+    <h3 class="text-center">メッセージはまだありません</h3>
   <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
 
-<%= form_with(model: @dm, local: true) do |f| %>
+  <%= form_with(model: @dm, local: true) do |f| %>
   <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
   <%= f.hidden_field :room_id, :value => @room.id %>
   <br>

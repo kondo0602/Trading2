@@ -1,19 +1,19 @@
 <% provide(:title, '検索結果') %>
-<h1>検索結果</h1>
+  <h1>検索結果</h1>
 
-<%= render 'shared/search' %>
+  <%= render 'shared/search' %>
 
-<%= render 'sidebar' %>
+  <%= render 'sidebar' %>
 
-<div class="col-md-8">
-<%#= will_paginate %>
+  <div class="col-md-8">
+    <%#= will_paginate %>
 
-<% if @items == [] %>
-  検索結果がありません。
-<% else %>
-  <ul class="itemindex">
-    <%= render @items %>
-  </ul>
-<% end %>
+      <% if @items == [] %>
+        検索結果がありません。
+      <% else %>
+        <ul class="itemindex">
+          <%= render @items %>
+        </ul>
+      <% end %>
 
-<%#= will_paginate %>
+      <%#= will_paginate %>

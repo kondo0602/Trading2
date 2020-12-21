@@ -1,12 +1,14 @@
 <ul>
   <li>
     <% @entries = room.entries %>
-    <% @entries.each do |e| %>
-      <% unless current_user == e.user %>
-        <%= gravatar_for e.user, size: 50 %>
-        <strong> from <%= link_to e.user.name, room_path(room) %>さん</strong><br>
+      <% @entries.each do |e| %>
+        <% unless current_user == e.user %>
+          <%= gravatar_for e.user, size: 50 %>
+          <strong>
+            from
+            <%= link_to e.user.name, room_path(room) %>さん</strong><br>
+        <% end %>
       <% end %>
-    <% end %>
-    <span><%= room.created_at.strftime("%Y年%m月%d日 %H:%M") %></span>
-  </li>
-</ul>
+      <span><%= room.created_at.strftime("%Y年%m月%d日 %H:%M") %></span>
+    </li>
+  </ul>

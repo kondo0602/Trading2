@@ -1,11 +1,11 @@
 <% provide(:title, 'トップページ') %>
 
-<%= render 'shared/search' %>
+  <%= render 'shared/search' %>
 
-<%= render 'sidebar' %>
+  <%= render 'sidebar' %>
 
-<div class="col-md-8">
-  <%= will_paginate %>
+  <div class="col-md-8">
+    <%= will_paginate %>
     <% if @items == [] %>
       検索結果がありません。
     <% else %>
@@ -13,5 +13,5 @@
         <%= render @items %>
       </ul>
     <% end %>
-  <%= will_paginate %>
-</div>
+    <%= will_paginate %>
+  </div>
