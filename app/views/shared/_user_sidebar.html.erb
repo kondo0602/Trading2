@@ -1,12 +1,12 @@
-<section class="user_image">
+<section class="user-image">
   <% if @user.image.attached? %>
     <%= link_to image_tag(@user.image.variant(gravity: :center, resize:'300x300^', crop:"300x300+0+0").processed), user_path(@user) %>
   <% else %>
     <%= link_to image_tag('sample1.jpeg'), item_path(@user) %>
   <% end %>
 </section>
-<section>
-  <p><%= @user.name %></p>
+<section class="user-info">
+  <h2><%= @user.name %>さん</h2>
   <p>お住まいの地域：<%= @user.address %></p>
   <% if logged_in? %>
     <% if current_user == @user %>
