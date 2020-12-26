@@ -73,9 +73,9 @@ class ItemsController < ApplicationController
         @items -= Item.where.not(['name LIKE ?', "%#{keyword}%"])
       end
     end
-    # @items -= Item.where.not(brand: params[:brand]) unless params[:brand] == ''
+    @items -= Item.where.not(brand: params[:brand]) unless params[:brand] == ''
     @items -= Item.where.not(size: params[:size]) unless params[:size] == ''
-    # @items -= Item.where.not(status: params[:status]) unless params[:status] == ''
+    @items -= Item.where.not(status: params[:status]) unless params[:status] == ''
   end
 
   def likes
