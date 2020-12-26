@@ -1,19 +1,8 @@
 <li id="item-<%= item.id %>">
-  <p><%= item.name %></p>
-  <div class="content">
-    <% if item.image.attached? %>
-      <%= link_to image_tag(item.image.variant(gravity: :center, resize: '250x250^', crop: '250x250+0+0').processed), item_path(item) %>
-    <% else %>
-      <%= link_to image_tag('sample1.jpeg'), item_path(item) %>
-    <% end %>
-    <p class="item-info">
-      <%= "ブランド：#{item.brand}" %><br>
-      <%= "サイズ：#{item.size}" %><br>
-      <%= "状態：#{item.status}" %>
-    </p>
-    <p class="timestamp">
-      <%= time_ago_in_words(item.created_at) %>
-      前に投稿
-    </p>
-  </div>
+  <% if item.image.attached? %>
+    <%= link_to image_tag(item.image.variant(gravity: :center, resize: '180x180^', crop: '180x180+0+0').processed), item_path(item) %>
+    <p><%= item.name %></p>
+  <% else %>
+    <%= link_to image_tag('sample1.jpeg'), item_path(item) %>
+  <% end %>
 </li>

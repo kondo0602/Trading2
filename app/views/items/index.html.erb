@@ -1,10 +1,9 @@
 <% provide(:title, 'トップページ') %>
 
   <%= render 'shared/search' %>
-
   <%= render 'sidebar' %>
-
-  <div class="col-md-8">
+  <div class="col-md-9">
+    <h2>新着商品</h2>
     <%= will_paginate %>
     <% if @items == [] %>
       検索結果がありません。

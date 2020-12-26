@@ -1,6 +1,78 @@
-<div class="col-md-4 sidebar">
+<div class="col-md-3 sidebar">
+  <h2>お住まいの地域から探す</h2>
+  <p>北海道・東北エリア</p>
+  <div class="prefecture">
+    <%= link_to "北海道", address_search_path(user_address: "北海道") %>
+    <%= link_to "青森", address_search_path(user_address: "青森") %>
+    <%= link_to "岩手", address_search_path(user_address: "岩手") %>
+    <%= link_to "宮城", address_search_path(user_address: "宮城") %>
+    <%= link_to "秋田", address_search_path(user_address: "秋田") %>
+    <%= link_to "山形", address_search_path(user_address: "山形") %>
+    <%= link_to "福島", address_search_path(user_address: "福島") %>
+  </div>
+  <p>北陸エリア</p>
+  <div class="prefecture">
+    <%= link_to "新潟", address_search_path(user_address: "新潟") %>
+    <%= link_to "富山", address_search_path(user_address: "富山") %>
+    <%= link_to "石川", address_search_path(user_address: "石川") %>
+    <%= link_to "福井", address_search_path(user_address: "福井") %>
+    <%= link_to "山梨", address_search_path(user_address: "山梨") %>
+    <%= link_to "長野", address_search_path(user_address: "長野") %>
+  </div>
+  <p>関東エリア</p>
+  <div class="prefecture">
+    <%= link_to "茨城", address_search_path(user_address: "茨城") %>
+    <%= link_to "栃木", address_search_path(user_address: "栃木") %>
+    <%= link_to "群馬", address_search_path(user_address: "群馬") %>
+    <%= link_to "埼玉", address_search_path(user_address: "埼玉") %>
+    <%= link_to "千葉", address_search_path(user_address: "千葉") %>
+    <%= link_to "東京", address_search_path(user_address: "東京") %>
+    <%= link_to "神奈川", address_search_path(user_address: "神奈川") %>
+  </div>
+  <p>東海エリア</p>
+  <div class="prefecture">
+    <%= link_to "岐阜", address_search_path(user_address: "岐阜") %>
+    <%= link_to "静岡", address_search_path(user_address: "静岡") %>
+    <%= link_to "愛知", address_search_path(user_address: "愛知") %>
+    <%= link_to "三重", address_search_path(user_address: "三重") %>
+  </div>
+  <p>関西エリア</p>
+  <div class="prefecture">
+    <%= link_to "滋賀", address_search_path(user_address: "滋賀") %>
+    <%= link_to "京都", address_search_path(user_address: "京都") %>
+    <%= link_to "大阪", address_search_path(user_address: "大阪") %>
+    <%= link_to "兵庫", address_search_path(user_address: "兵庫") %>
+    <%= link_to "奈良", address_search_path(user_address: "奈良") %>
+    <%= link_to "和歌山", address_search_path(user_address: "和歌山") %>
+  </div>
+  <p>中国エリア</p>
+  <div class="prefecture">
+    <%= link_to "鳥取", address_search_path(user_address: "鳥取") %>
+    <%= link_to "島根", address_search_path(user_address: "島根") %>
+    <%= link_to "岡山", address_search_path(user_address: "岡山") %>
+    <%= link_to "広島", address_search_path(user_address: "広島") %>
+    <%= link_to "山口", address_search_path(user_address: "山口") %>
+  </div>
+  <p>四国エリア</p>
+  <div class="prefecture">
+    <%= link_to "徳島", address_search_path(user_address: "徳島") %>
+    <%= link_to "香川", address_search_path(user_address: "香川") %>
+    <%= link_to "愛媛", address_search_path(user_address: "愛媛") %>
+    <%= link_to "高知", address_search_path(user_address: "高知") %>
+  </div>
+  <p>九州・沖縄エリア</p>
+  <div class="prefecture">
+    <%= link_to "福岡", address_search_path(user_address: "福岡") %>
+    <%= link_to "佐賀", address_search_path(user_address: "佐賀") %>
+    <%= link_to "長崎", address_search_path(user_address: "長崎") %>
+    <%= link_to "熊本", address_search_path(user_address: "熊本") %>
+    <%= link_to "大分", address_search_path(user_address: "大分") %>
+    <%= link_to "宮崎", address_search_path(user_address: "宮崎") %>
+    <%= link_to "鹿児島", address_search_path(user_address: "鹿児島") %>
+    <%= link_to "沖縄", address_search_path(user_address: "沖縄") %>
+  </div>
+  <h2>条件から探す</h2>
   <%= form_with url:search_path , method: :get, local: true do |f| %>
-  <h2>商品を絞りこむ</h2>
   <p>キーワードから探す</p>
   <%= f.text_field :search, value: @words, placeholder: "キーワードを入力してください" %>
   <p>ブランドから探す</p>

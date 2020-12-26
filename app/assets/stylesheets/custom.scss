@@ -10,7 +10,6 @@
 }
 
 body {
-  padding-top: 60px;
 }
 
 section {
@@ -45,10 +44,11 @@ h1 {
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   text-align: center;
   font-weight: normal;
   color: $gray-light;
+  border-bottom: 1px solid $gray-light;
 }
 
 p {
@@ -71,6 +71,20 @@ p {
     color: #fff;
     text-decoration: none;
   }
+}
+
+.background{
+  height:200px;
+  /* 画像ファイルの指定 */
+  background-image: url(header.jpeg);
+  /* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-size: cover;
+  /* 背景画像が読み込まれる前に表示される背景のカラー */
+  background-color: #464646;
 }
 
 /* フッターのCSSルール */
@@ -136,24 +150,19 @@ aside {
 }
 
 .search {
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 40px;
   border-bottom: 1px solid $gray-lighter;
 }
 
 .sidebar {
-  margin-top: 50px;
+  .prefecture{
+    margin-bottom:10px;
+    font-size: 0.9em;
+  }
   .btn{
     margin-top: 50px;
   }
-}
-
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
 }
 
 .btn {
@@ -204,17 +213,24 @@ table td {
 .itemindex {
   list-style: none;
   margin: 0;
+  padding-bottom: 30px;
+  border-bottom: 1px solid $gray-light;
   li {
+    // ボックスに要素が収まらない場合の指定,UAに合わせる
     overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
-  .item-info {
-    padding-left: 10px;
-    display:inline-block;
-  }
-  .timestamp {
-    margin-top: 10px;
+    // インラインブロック要素にする
+    display: inline-block;
+    position:relative;
+    margin: 5px;
+    p{
+      position: absolute;
+      width:100%;
+      top: 0;
+      left: 0;
+      font-size: 0.9em;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(80, 80, 80, 0.8);
+    }
   }
 }
 
@@ -255,7 +271,6 @@ table td {
   }
   .content {
     display: block;
-    // margin-left: 60px;
     img {
       display: block;
       padding: 5px 0;
@@ -265,11 +280,6 @@ table td {
     color: $gray-light;
     display: block;
     // margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
   }
 }
 

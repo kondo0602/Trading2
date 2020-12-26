@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 
   # strong parametersを使用するための外部メソッド
   def user_params
-    params.require(:user).permit(:image, :name, :email, :password,
+    params.require(:user).permit(:image, :name, :email, :address, :password,
                                  :password_confirmation)
   end
 

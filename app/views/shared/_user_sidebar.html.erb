@@ -7,6 +7,7 @@
 </section>
 <section>
   <p><%= @user.name %></p>
+  <p>お住まいの地域：<%= @user.address %></p>
   <% if logged_in? %>
     <% if current_user == @user %>
       <p><%= link_to "いいねした商品一覧", item_likes_path(@items) %></p>

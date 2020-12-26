@@ -6,9 +6,9 @@
 
     <center>
       <% if @item.image.attached? %>
-        <%= image_tag(@item.display_image)%>
+        <%= image_tag(@item.image.variant(gravity: :center, resize: '250x250^', crop: '250x250+0+0').processed) %>
       <% else %>
-        <%= image_tag 'sample1.jpeg', size: '600x600' %>
+        <%= image_tag 'sample1.jpeg', size: '250x250' %>
       <% end %>
 
       <table>

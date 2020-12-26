@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :correct_user, only: %i[edit update]
 
   def index
-    @items = Item.where(shitagaki: '0').paginate(page: params[:page], per_page: 5)
+    @items = Item.where(shitagaki: '0').paginate(page: params[:page], per_page: 30)
   end
 
   def create
@@ -54,6 +54,14 @@ class ItemsController < ApplicationController
     @items = Item.where(shitagaki: '1').paginate(page: params[:page], per_page: 5)
   end
 
+  def address_search
+    users = User.where(address: params[:user_address])
+    @items = []
+    users.each do |user|
+      @items += Item.where(user_id: user.id)
+    end
+  end
+
   def search
     @words = params[:search]
     if params[:or_search] == '1'
@@ -78,7 +86,6 @@ class ItemsController < ApplicationController
       @items -= Item.where.not(brand: params[:brand]) unless params[:brand] == ''
       @items -= Item.where.not(size: params[:size]) unless params[:size] == ''
       @items -= Item.where.not(status: params[:status]) unless params[:status] == ''
-      # @size = params[:size]
     end
   end
 
