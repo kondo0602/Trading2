@@ -1,10 +1,10 @@
 <div class="col-md-8 col-md-offset-2 search">
   <%= form_with url:search_path , method: :get, local: true do |f| %>
   <%= f.text_field :search, value: @words, placeholder: "キーワードを入力" %>
-  <%= f.submit '検索する', :name => nil %>
-  <%= f.label :or_search, class: "checkbox inline" do %>
-  <%= f.check_box :or_search %>
-  <span>OR検索</span>
-<% end %>
-<% end %>
+  <%# 隠しパラメータで以下の値を渡さないとunless params[:size]の条件に当てはまらず全商品表示されない %>
+    <%= f.hidden_field :brand, value: '' %>
+    <%= f.hidden_field :size, value: '' %>
+    <%= f.hidden_field :status, value: '' %>
+    <%= f.submit '検索する', :name => nil %>
+  <% end %>
 </div>

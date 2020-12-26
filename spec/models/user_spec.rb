@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'nameが50文字より長いとNG' do
-      @user.name = "a" * 51
+      @user.name = 'a' * 51
       expect(@user.valid?).to eq(false)
     end
 
@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'emailが255文字より長いとNG' do
-      @user.email = "a" * 244 + "@example.com"
+      @user.email = 'a' * 244 + '@example.com'
       expect(@user.valid?).to eq(false)
     end
 
@@ -37,15 +37,15 @@ RSpec.describe User, type: :model do
     end
 
     it 'emailがDBに小文字で格納されているか' do
-      @user.email = "Foo@ExAMPle.CoM"
+      @user.email = 'Foo@ExAMPle.CoM'
       @user.save
       expect(@user.email.downcase).to eq(@user.reload.email)
     end
 
-    # it 'passwordが空白だとNG' do
-    #   @user.password = ''
-    #   expect(@user.valid?).to eq(false)
-    # end
+    it 'addressが空白だとNG' do
+      @user.address = ''
+      expect(@user.valid?).to eq(false)
+    end
 
     it 'passwordが6文字より短いとNG' do
       @user.password = '55555'
@@ -56,9 +56,9 @@ RSpec.describe User, type: :model do
   describe 'アソシエーション' do
     it 'userが削除されたらuserが出品しているitemも削除されること' do
       @user.save
-      @user.items.create!(name: "shoes", content: "Black Shoes",
-                          brand: "nike", size: "27cm", status: "新品未使用")
-      expect{ @user.destroy }.to change{ Item.count }.by(-1)
+      @user.items.create!(name: 'shoes', content: 'Black Shoes',
+                          brand: 'nike', size: '27cm', status: '新品未使用')
+      expect { @user.destroy }.to change { Item.count }.by(-1)
     end
   end
 end

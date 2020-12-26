@@ -12,6 +12,7 @@ class User < ApplicationRecord
                     # 有効なメールアドレスの正規表現
                     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+  validates :address,  presence: true
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   def already_liked?(item)

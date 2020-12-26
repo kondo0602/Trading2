@@ -64,29 +64,18 @@ class ItemsController < ApplicationController
 
   def search
     @words = params[:search]
-    if params[:or_search] == '1'
+    @items = Item.all.paginate(page: params[:page])
+    if params[:search] != ''
       split_keyword = params[:search].split(/[[:blank:]]+/)
-      @items = []
       split_keyword.each do |keyword|
         next if keyword == ''
 
-        @items += Item.where(['name LIKE ?', "%#{keyword}%"])
+        @items -= Item.where.not(['name LIKE ?', "%#{keyword}%"])
       end
-      @items.uniq!
-    else
-      @items = Item.all.paginate(page: params[:page])
-      if params[:search] != ''
-        split_keyword = params[:search].split(/[[:blank:]]+/)
-        split_keyword.each do |keyword|
-          next if keyword == ''
-
-          @items -= Item.where.not(['name LIKE ?', "%#{keyword}%"])
-        end
-      end
-      @items -= Item.where.not(brand: params[:brand]) unless params[:brand] == ''
-      @items -= Item.where.not(size: params[:size]) unless params[:size] == ''
-      @items -= Item.where.not(status: params[:status]) unless params[:status] == ''
     end
+    # @items -= Item.where.not(brand: params[:brand]) unless params[:brand] == ''
+    @items -= Item.where.not(size: params[:size]) unless params[:size] == ''
+    # @items -= Item.where.not(status: params[:status]) unless params[:status] == ''
   end
 
   def likes

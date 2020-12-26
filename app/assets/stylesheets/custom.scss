@@ -51,6 +51,12 @@ h2 {
   border-bottom: 1px solid $gray-light;
 }
 
+h3{
+  font-size: 1.0em;
+  text-align: center;
+  color: $gray-light;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -122,6 +128,10 @@ footer {
 
 help-content {
   margin: 10px auto;
+  p{
+    font-size: 1.0em;
+    color: $gray-light;
+  }
 }
 
 /* sidebar */
