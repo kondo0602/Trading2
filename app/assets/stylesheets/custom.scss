@@ -80,7 +80,7 @@ p {
 }
 
 .background{
-  height:300px;
+  height:200px;
   /* 画像ファイルの指定 */
   background-image: url(header.jpg);
   /* 画像を常に天地左右の中央に配置 */
@@ -96,23 +96,11 @@ p {
 /* フッターのCSSルール */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: $gray-light;
-  a {
-    color: #555;
-    &:hover {
-      color: #222;
-    }
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
+  margin-top: 70px;
+  padding-top:15px;
+  p {
+    text-align: center;
+    color: white;
   }
 }
 
