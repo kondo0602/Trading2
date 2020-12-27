@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :correct_user, only: %i[edit update]
 
   def index
-    @items = Item.where(shitagaki: '0').paginate(page: params[:page], per_page: 30)
+    @items = Item.where(shitagaki: '0').paginate(page: params[:page], per_page: 24)
   end
 
   def create
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
 
   def shitagaki
     @user = current_user
-    @items = Item.where(shitagaki: '1').paginate(page: params[:page], per_page: 5)
+    @items = Item.where(shitagaki: '1').paginate(page: params[:page], per_page: 8)
   end
 
   def address_search
@@ -80,7 +80,7 @@ class ItemsController < ApplicationController
 
   def likes
     @user = current_user
-    @items = current_user.liked_items.includes(:user).paginate(page: params[:page], per_page: 5)
+    @items = current_user.liked_items.includes(:user).paginate(page: params[:page], per_page: 24)
   end
 
   private
