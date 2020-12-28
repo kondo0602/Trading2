@@ -74,7 +74,7 @@
     <% if current_user %>
       <%= form_with(model: [@item, @comment], local: true) do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.text_area :content, placeholder: "コメントを入力してください" %>
+      <%= f.text_area :content, placeholder: "コメントを入力してください(255文字以内)" %>
       <%= f.submit "コメントする", class: "btn btn-primary" %>
     <% end %>
   <% else %>
