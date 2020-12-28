@@ -1,8 +1,9 @@
 <% provide(:title, 'ユーザ新規登録') %>
-  <h1>ユーザ新規登録</h1>
+  <% provide(:button_text, 'ユーザ情報登録') %>
+    <h1>ユーザ新規登録</h1>
 
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <%= render 'form' %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= render 'form' %>
+      </div>
     </div>
-  </div>

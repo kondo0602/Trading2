@@ -21,5 +21,5 @@ include_blank: "お住まいの地域を選択して下さい" %>
 <%= f.label :パスワード再入力 %>
 <%= f.password_field :password_confirmation, placeholder: "パスワードを再入力してください（6文字以上）", class: 'form-control' %>
 
-<%= f.submit 'ユーザ登録', class: "btn btn-primary" %>
+<%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
