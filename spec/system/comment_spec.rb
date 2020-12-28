@@ -10,16 +10,19 @@ describe 'コメント管理機能', type: :system do
       visit new_user_path
       fill_in 'user[name]', with: 'test'
       fill_in 'user[email]', with: 'a@example.com'
+      select '宮城県', from: 'user[address]'
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
+      click_on 'ユーザ登録'
+      visit item_path(item)
     end
 
-    context '必要な情報が全て入力されている場合' do
-      it '商品詳細ページに遷移できていること' do
-        click_on 'ユーザ登録'
-        visit item_path(item)
+    context 'コメントが入力されている場合' do
+      it '商品詳細ページにリダイレクトされ、適切なflashが表示されていること' do
+        fill_in 'comment[content]', with: 'コメントです。'
+        click_on 'コメントする'
         expect(current_path).to eq item_path(item)
-        # expect(page).to have_content 'Welcome to Trading!'
+        expect(page).to have_content 'コメントを投稿しました'
       end
     end
   end

@@ -8,14 +8,16 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <%# フラッシュに格納されているメッセージをイテレートして表示する　%>
+      <%# フラッシュに格納されているメッセージをイテレートして表示する %>
         <% flash.each do |message_type, message| %>
           <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
         <% end %>
         <%= yield %>
       </div>
-      <%= render 'layouts/footer' %>
-      <%#= 開発環境の場合デバッグ情報を表示する %>
+      <%# 開発環境の場合デバッグ情報を表示する %>
         <%= debug(params) if Rails.env.development? %>
-      </body>
-    </html>
+        <%#= フッターとコンテンツが重ならいように空のコンテンツを作成する %>
+          <div class="push"></div>
+          <%= render 'layouts/footer' %>
+        </body>
+      </html>

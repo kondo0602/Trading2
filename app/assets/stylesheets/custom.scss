@@ -95,9 +95,14 @@ p {
 
 /* フッターのCSSルール */
 
+.push {
+  height: 250px;
+}
+
 footer {
-  margin-top: 150px;
+
   padding-top:15px;
+  bottom: 0;
   p {
     text-align: center;
     color: white;
