@@ -4,8 +4,9 @@ class Item < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
   has_one_attached :image
+  before_save { brand.downcase! }
   default_scope -> { order(created_at: :desc) }
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 25 }
   validates :content, presence: true, length: { maximum: 255 }
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
                                       message: 'must be a valid image format' },

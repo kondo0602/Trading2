@@ -10,6 +10,7 @@ describe 'ユーザ管理機能', type: :system do
       visit new_user_path
       fill_in 'user[name]', with: 'test'
       fill_in 'user[email]', with: 'a@example.com'
+      select '宮城県', from: 'user[address]'
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
     end
@@ -78,7 +79,6 @@ describe 'ユーザ管理機能', type: :system do
         expect(page).to have_content '出品する'
         expect(page).to have_content 'ユーザ情報の編集'
         expect(page).to have_content 'DM一覧'
-        expect(page).to have_content item.name
       end
     end
 
