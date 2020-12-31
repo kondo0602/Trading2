@@ -83,10 +83,8 @@
 
   <% if logged_in? %>
     <% if current_user.id == @item.user_id %>
-      <%# <%= button_to "この商品を編集する", edit_item_path(@item), class: "btn btn-primary" %><br>
-        %>
-        <%= button_to "この商品を編集する", {controller: 'items', action: 'edit'}, {method: :get, class: "btn btn-primary"} %>
-        <%= button_to "この商品を削除する", @item, method: :delete, class: "btn btn-danger" , data: { confirm: "本当に削除してよろしいですか?" } %>
-      <% end %>
+      <%= button_to "この商品を編集する", {controller: 'items', action: 'edit'}, {method: :get, class: "btn btn-primary"} %>
+      <%= button_to "この商品を削除する", @item, method: :delete, class: "btn btn-danger" , data: { confirm: "本当に削除してよろしいですか?" } %>
     <% end %>
-  </div>
+  <% end %>
+</div>
