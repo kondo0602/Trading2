@@ -6,12 +6,11 @@
         <li><%= link_to current_user.name, current_user %></li>
         <li><%= link_to "出品", new_item_path %></li>
         <li><%= link_to "Tradingとは？", help_path %></li>
-        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
         <li><%= button_to "ログアウト", logout_path, method: :delete, class: "btn btn-danger" %></li>
       <% else %>
         <li><%= link_to "新規登録", signup_path %></li>
         <li><%= link_to "Tradingとは？", help_path %></li>
-        <li><%= link_to "ログイン", login_path %></li>
+        <li><%= button_to "ログイン", {controller: 'sessions', action: 'new'}, {method: :get, class: "btn btn-primary"} %></li>
       <% end %>
     </ul>
   </div>
