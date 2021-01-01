@@ -5,6 +5,7 @@ RSpec.describe Item, type: :model do
     # association使って描き直したい・・・うまくいかないので保留
     @user = create(:user)
     @item = build(:item, user_id: @user.id)
+    @item.image.attach(io: File.open('app/assets/images/item1.jpg'), filename: 'item1.jpg')
   end
 
   describe 'バリデーション' do

@@ -56,8 +56,9 @@ RSpec.describe User, type: :model do
   describe 'アソシエーション' do
     it 'userが削除されたらuserが出品しているitemも削除されること' do
       @user.save
-      @user.items.create!(name: 'shoes', content: 'Black Shoes',
-                          brand: 'nike', size: '27cm', status: '新品未使用')
+      @item = build(:item, user_id: @user.id)
+      @item.image.attach(io: File.open('app/assets/images/item1.jpg'), filename: 'item1.jpg')
+      @item.save
       expect { @user.destroy }.to change { Item.count }.by(-1)
     end
   end

@@ -31,13 +31,14 @@ RSpec.describe '商品管理機能', type: :system do
     context '必要な情報が全て入力されている場合' do
       it '商品情報を投稿し、商品一覧ページに遷移し、適切なflashが表示されていること' do
         visit new_item_path
+        attach_file 'item[image]', 'app/assets/images/item1.jpg'
         fill_in 'item[name]', with: 'name'
         fill_in 'item[content]', with: 'content'
         fill_in 'item[brand]', with: 'brand'
         select '25cm', from: 'item[size]'
         select '未使用新品', from: 'item[status]'
         click_on '出品する'
-        expect(current_path).to eq root_url
+        expect(current_path).to eq items_path
         expect(page).to have_content '出品しました！'
       end
     end
@@ -72,7 +73,7 @@ RSpec.describe '商品管理機能', type: :system do
         fill_in 'item[name]', with: ''
         click_on '編集内容を確定する'
         expect(current_path).to eq item_path(@item)
-        expect(page).to have_content "Name can't be blank"
+        expect(page).to have_content '商品名を入力してください'
       end
     end
 
@@ -82,7 +83,7 @@ RSpec.describe '商品管理機能', type: :system do
         fill_in 'item[content]', with: ''
         click_on '編集内容を確定する'
         expect(current_path).to eq item_path(@item)
-        expect(page).to have_content "Content can't be blank"
+        expect(page).to have_content '商品の説明を入力してください'
       end
     end
 
@@ -92,7 +93,7 @@ RSpec.describe '商品管理機能', type: :system do
         fill_in 'item[brand]', with: ''
         click_on '編集内容を確定する'
         expect(current_path).to eq item_path(@item)
-        expect(page).to have_content "Brand can't be blank"
+        expect(page).to have_content 'ブランド名を入力してください'
       end
     end
 
@@ -102,7 +103,7 @@ RSpec.describe '商品管理機能', type: :system do
         select 'サイズを選択して下さい', from: 'item[size]'
         click_on '編集内容を確定する'
         expect(current_path).to eq item_path(@item)
-        expect(page).to have_content "Size can't be blank"
+        expect(page).to have_content 'サイズを入力してください'
       end
     end
 
@@ -112,7 +113,7 @@ RSpec.describe '商品管理機能', type: :system do
         select '商品の状態を選択して下さい', from: 'item[status]'
         click_on '編集内容を確定する'
         expect(current_path).to eq item_path(@item)
-        expect(page).to have_content "Status can't be blank"
+        expect(page).to have_content '商品の状態を入力してください'
       end
     end
   end

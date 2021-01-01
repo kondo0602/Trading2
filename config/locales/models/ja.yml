@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザ
+      item: 商品
+      comment: コメント
+    attributes:
+      user:
+        name: ユーザ名
+        email: メールアドレス
+        address: お住まいの地域
+        password: パスワード
+        password_confirmation: 再入力されたパスワード
+      item:
+        name: 商品名
+        content: 商品の説明
+        brand: ブランド名
+        size: サイズ
+        status: 商品の状態
+      comment:
+        content: コメント

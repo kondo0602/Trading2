@@ -10,8 +10,8 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(item_params)
     @item.image.attach(params[:item][:image])
     if @item.save
-      flash[:success] = '出品しました!'
-      redirect_to root_url
+      flash[:success] = '出品しました！'
+      redirect_to items_path
     else
       render 'items/new'
     end

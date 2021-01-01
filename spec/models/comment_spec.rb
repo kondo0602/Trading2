@@ -1,11 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Like, type: :model do
+RSpec.describe Comment, type: :model do
   before do
     # association使って描き直したい・・・うまくいかないので保留
     @user = create(:user)
-    @item = create(:item, user_id: @user.id)
-    @comment = build(:comment, user_id: @user.id,
+    @item = build(:item, user_id: @user.id)
+    @item.image.attach(io: File.open('app/assets/images/item1.jpg'), filename: 'item1.jpg')
+    @item.save!
+    @comment = build(:comment, content: 'content',
+                               user_id: @user.id,
                                item_id: @item.id)
   end
 
