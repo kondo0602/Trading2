@@ -43,6 +43,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # ユーザ画像が設定されていない場合、初期画像をプロフィール画像に設定する
+    unless @user.image.attached?
+      @user.image.attach(io: File.open('app/assets/images/profile.png'),
+                         filename: 'item1.jpg')
+    end
     if @user.save
       flash[:success] = 'Tradingへようこそ!'
       login @user

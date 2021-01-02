@@ -2,7 +2,7 @@
   <% if @user.image.attached? %>
     <%= link_to image_tag(@user.image.variant(gravity: :center, resize:'250x250^', crop:"250x250+0+0").processed), user_path(@user) %>
   <% else %>
-    <%= link_to image_tag('sample1.jpeg'), item_path(@user) %>
+    <%= link_to image_tag('profile.png'), item_path(@user) %>
   <% end %>
 </section>
 <section class="user-info">
