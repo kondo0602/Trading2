@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[edit update destroy]
   before_action :correct_user, only: %i[edit update]
-  before_action :admin_user, only: :destroy
 
   def new
     @user = User.new
@@ -69,7 +68,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = 'User deleted'
+    flash[:success] = 'ユーザ情報の削��が完了しました'
     redirect_to root_path
   end
 
@@ -87,9 +86,5 @@ class UsersController < ApplicationController
       flash[:danger] = 'そのページに対する編集権限がありません'
       redirect_to root_url
     end
-  end
-
-  def admin_user
-    redirect_to root_url unless current_user.admin?
   end
 end

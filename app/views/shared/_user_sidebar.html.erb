@@ -15,6 +15,7 @@
       <p><%= link_to "出品する", new_item_path %></p>
       <p><%= link_to "ユーザ情報の編集", edit_user_path(@user) %></p>
       <p><%= link_to "DM一覧", rooms_path %></p>
+      <p><%= button_to "退会する", @user, method: :delete, class: "btn btn-danger" , data: { confirm: "本当に退会してよろしいですか?" } %></p>
     <% else %>
       <% if @isRoom == true %>
         <p>

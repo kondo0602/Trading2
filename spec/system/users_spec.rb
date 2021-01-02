@@ -127,12 +127,12 @@ describe 'ユーザ管理機能', type: :system do
         fill_in 'user[name]', with: ''
         click_on 'ユーザ情報編集'
         expect(current_path).to eq user_path(user_a)
-        expect(page).to have_content '名前を入力してください'
+        expect(page).to have_content 'ユーザ名を入力してください'
       end
     end
 
     context 'メールアドレスが入力されていない場合' do
-      it 'ユーザ情報編集ページにリダイレクトされ、適��なflashが表示されること' do
+      it 'ユーザ情報編集ページにリダイレクトされ、適切なflashが表示されること' do
         fill_in 'user[email]', with: ''
         click_on 'ユーザ情報編集'
         expect(current_path).to eq user_path(user_a)
@@ -146,6 +146,24 @@ describe 'ユーザ管理機能', type: :system do
         click_on 'ユーザ情報編集'
         expect(current_path).to eq user_path(user_a)
         expect(page).to have_content 'お住まいの地域を入力してください'
+      end
+    end
+  end
+
+  describe 'ユーザ削除機能' do
+    before do
+      visit login_path
+      fill_in 'session[email]', with: user_a.email
+      fill_in 'session[password]', with: 'password'
+      click_on 'ログインする'
+      visit user_path(user_a)
+    end
+
+    context 'ユーザ退会ボタンが押下された場合' do
+      it 'ユーザを削除し、トップページにリダイレクトされること' do
+        click_on '退会する'
+        expect(current_path).to eq root_path
+        expect(page).to have_content 'ユーザ情報の削��が完了しました'
       end
     end
   end
