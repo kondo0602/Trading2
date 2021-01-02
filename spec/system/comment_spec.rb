@@ -8,6 +8,7 @@ describe 'コメント管理機能', type: :system do
     @item = build(:item, user_id: @user.id)
     @item.image = fixture_file_upload('/files/item1.jpg')
     @item.save!
+    sleep 0.5
   end
 
   describe 'コメント新規作成機能' do

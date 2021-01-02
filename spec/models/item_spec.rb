@@ -6,6 +6,7 @@ RSpec.describe Item, type: :model do
     @user = create(:user)
     @item = build(:item, user_id: @user.id)
     @item.image.attach(io: File.open('app/assets/images/item1.jpg'), filename: 'item1.jpg')
+    sleep 0.5
   end
 
   describe 'バリデーション' do

@@ -18,9 +18,8 @@ describe 'ユーザ管理機能', type: :system do
     context '必要な情報が全て入力されている場合' do
       it '登録したユーザのユーザ詳細ページに遷移し、適切なflashが表示されていること' do
         click_on 'ユーザ情報登録'
-        # ログインしているかどうかのテストも必要か
         expect(current_path).to eq user_path(User.find_by(email: 'a@example.com'))
-        expect(page).to have_content 'Welcome to Trading!'
+        expect(page).to have_content 'Tradingへようこそ!'
       end
     end
 
@@ -80,7 +79,6 @@ describe 'ユーザ管理機能', type: :system do
 
     context 'ユーザがログインしている場合' do
       let(:login_user) { user_a }
-
       it 'ログインユーザにしか使用できない機能のリンクが表示されること' do
         visit user_path(user_a)
         expect(page).to have_content 'いいねした商品一覧'
@@ -93,7 +91,6 @@ describe 'ユーザ管理機能', type: :system do
 
     context '自分以外のユーザがログインしている場合' do
       let(:login_user) { user_b }
-
       it 'ログインユーザにしか使用できない機能のリンクが表示されないこと' do
         visit user_path(user_a)
         expect(page).not_to have_content 'いいねした商品一覧'
@@ -101,6 +98,54 @@ describe 'ユーザ管理機能', type: :system do
         expect(page).not_to have_content '出品する'
         expect(page).not_to have_content 'ユーザ情報の編集'
         expect(page).not_to have_content 'DM一覧'
+      end
+    end
+  end
+
+  describe 'ユーザ情報編集機能' do
+    before do
+      visit login_path
+      fill_in 'session[email]', with: user_a.email
+      fill_in 'session[password]', with: 'password'
+      click_on 'ログインする'
+      visit edit_user_path(user_a)
+      fill_in 'user[name]', with: 'edit_test'
+      fill_in 'user[email]', with: 'a@example.com'
+      select '宮城県', from: 'user[address]'
+    end
+
+    context '必要な情報が全て入力されている場合' do
+      it 'ユーザ情報を編集し、ユーザ詳細ページにリダイレクトされること' do
+        click_on 'ユーザ情報編集'
+        expect(current_path).to eq user_path(user_a)
+        expect(page).to have_content 'ユーザ情報の編集が完了しました'
+      end
+    end
+
+    context '名前が入力されていない場合' do
+      it 'ユーザ情報編集ページにリダイレクトされ、適切なflashが表示されること' do
+        fill_in 'user[name]', with: ''
+        click_on 'ユーザ情報編集'
+        expect(current_path).to eq user_path(user_a)
+        expect(page).to have_content '名前を入力してください'
+      end
+    end
+
+    context 'メールアドレスが入力されていない場合' do
+      it 'ユーザ情報編集ページにリダイレクトされ、適��なflashが表示されること' do
+        fill_in 'user[email]', with: ''
+        click_on 'ユーザ情報編集'
+        expect(current_path).to eq user_path(user_a)
+        expect(page).to have_content 'メールアドレスを入力してください'
+      end
+    end
+
+    context '住んでいる県が選択されていない場合' do
+      it 'ユーザ情報編集ページにリダイレクトされ、適切なflashが表示されること' do
+        select 'お住まいの地域を選択してください', from: 'user[address]'
+        click_on 'ユーザ情報編集'
+        expect(current_path).to eq user_path(user_a)
+        expect(page).to have_content 'お住まいの地域を入力してください'
       end
     end
   end
