@@ -7,8 +7,7 @@ RSpec.describe Comment, type: :model do
     @item = build(:item, user_id: @user.id)
     @item.image.attach(io: File.open('app/assets/images/item1.jpg'), filename: 'item1.jpg')
     @item.save!
-    @comment = build(:comment, content: 'content',
-                               user_id: @user.id,
+    @comment = build(:comment, user_id: @user.id,
                                item_id: @item.id)
   end
 
