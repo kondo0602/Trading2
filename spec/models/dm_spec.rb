@@ -19,5 +19,10 @@ RSpec.describe Dm, type: :model do
       @dm.content = ''
       expect(@dm.valid?).to eq(false)
     end
+
+    it 'contentが255文字以上だとNG' do
+      @dm.content = 'a' * 256
+      expect(@dm.valid?).to eq(false)
+    end
   end
 end
