@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
     @user = build(:user)
-    sleep 0.5
+    sleep 1.0
   end
 
   describe 'バリデーション' do
@@ -55,12 +55,28 @@ RSpec.describe User, type: :model do
   end
 
   describe 'アソシエーション' do
-    it 'userが削除されたらuserが出品しているitemも削除されること' do
+    before do
       @user.save
       @item = build(:item, user_id: @user.id)
       @item.image.attach(io: File.open('app/assets/images/item1.jpg'), filename: 'item1.jpg')
       @item.save
+      @user_b = create(:user)
+      @room = Room.create
+      @entry_a = Entry.create(room_id: @room.id, user_id: @user.id)
+      @entry_b = Entry.create(room_id: @room.id, user_id: @user_b.id)
+    end
+
+    it 'userが削除されたらuserが出品しているitemも削除されること' do
       expect { @user.destroy }.to change { Item.count }.by(-1)
+    end
+
+    it 'userが削除されたらuserが参加しているentryも削除されること' do
+      expect { @user.destroy }.to change { Entry.count }.by(-1)
+    end
+
+    it 'userが削除されたらuserが送信したdmも削除されること' do
+      @dm = create(:dm, room_id: @room.id, user_id: @user.id)
+      expect { @user.destroy }.to change { Dm.count }.by(-1)
     end
   end
 end
