@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'ユーザ管理機能', type: :system do
   let(:user_a) { create(:user) }
   let(:user_b) { create(:user) }
-  # let!(:item) { build(:item, user: user_a) }
 
   describe 'ユーザ新規作成機能' do
     before do
