@@ -3,11 +3,13 @@ name = 'テスト太郎'
 email = 'a@sample.com'
 address = '宮城'
 password = 'password'
-User.create!(name: name,
-             email: email,
-             address: address,
-             password: password,
-             password_confirmation: password)
+user = User.create(name: name,
+                   email: email,
+                   address: address,
+                   password: password,
+                   password_confirmation: password)
+user.image.attach(io: File.open('app/assets/images/sample1.jpg'), filename: 'sample1.jpg')
+user.save!
 
 # サイトの見栄え用サンプルデータの生成
 10.times do |n|
@@ -15,15 +17,16 @@ User.create!(name: name,
   email = "foobar#{n + 1}@sample.com"
   address = %w[北海道 宮城 東京 神奈川 京都 福岡 沖縄].sample
   password = 'password'
-  User.create!(name: name,
-               email: email,
-               address: address,
-               password: password,
-               password_confirmation: password)
+  user = User.create(name: name,
+                     email: email,
+                     address: address,
+                     password: password,
+                     password_confirmation: password)
+  user.image.attach(io: File.open('app/assets/images/profile.png'), filename: 'profile.png')
+  user.save!
 end
-
-users = User.order(:created_at).take(10)
-10.times do
+users = User.order(:created_at).take(2)
+12.times do
   name = ['Nike AirForce1', 'NewBalance m1700', 'Reebok Pump'].sample
   content = '仙台の古着屋で購入しました。あまり履かなくなったので出品します。'
   brand = %w[Nike adidas NewBalance Reebok converse BALENCIAGA].sample
