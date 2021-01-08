@@ -7,5 +7,10 @@ FactoryBot.define do
     brand { 'nike' }
     size { '26cm' }
     status { '未使用新品' }
+
+    # itemがbuildされた後に、itemの画像を紐付ける
+    after(:build) do |item|
+      item.image.attach(io: File.open('spec/fixtures/files/item1.jpg'), filename: 'item1.jpg')
+    end
   end
 end

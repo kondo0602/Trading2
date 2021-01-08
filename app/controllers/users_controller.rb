@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[edit update destroy]
-  before_action :correct_user, only: %i[edit update]
+  before_action :correct_user, only: %i[edit update destroy]
 
   def new
     @user = User.new
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = 'ユーザ情報の削��が完了しました'
+    flash[:success] = 'ユーザ情報の削除が完了しました'
     redirect_to root_path
   end
 
