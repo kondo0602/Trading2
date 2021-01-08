@@ -6,11 +6,11 @@
     <div class="col-md-9">
       <h2><%= @user.name %>が出品した商品一覧 (<%= @user.items.count %>)</h2>
       <% if @user.items.any? %>
-        <%= will_paginate @items %>
+        <%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
         <ul class="itemindex">
           <%= render @items %>
         </ul>
-        <%= will_paginate @items %>
+        <%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
       <% else %>
         <p>まだ出品している商品がありません。</p>
       <% end %>

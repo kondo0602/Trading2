@@ -4,7 +4,7 @@
   <%= render 'sidebar' %>
   <div class="col-md-9">
     <h2>新着商品</h2>
-    <%= will_paginate %>
+    <%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
     <% if @items == [] %>
       検索結果がありません。
     <% else %>
@@ -12,5 +12,5 @@
         <%= render @items %>
       </ul>
     <% end %>
-    <%= will_paginate %>
+    <%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   </div>
