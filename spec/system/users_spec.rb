@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'ユーザ管理機能', type: :system do
   let(:user_a) { create(:user) }
   let(:user_b) { create(:user) }
-  # let!(:item) { build(:item, user: user_a) }
 
   describe 'ユーザ新規作成機能' do
     before do
@@ -148,6 +147,14 @@ describe 'ユーザ管理機能', type: :system do
         expect(page).to have_content 'お住まいの地域を入力してください'
       end
     end
+
+    context '自分ではないユーザのユーザ情報を編集しようとした場合' do
+      it 'トップページにリダイレクトされ、適切なflashが表示されること' do
+        visit edit_user_path(user_b)
+        expect(current_path).to eq root_path
+        expect(page).to have_content 'そのページに対する編集権限がありません'
+      end
+    end
   end
 
   describe 'ユーザ削除機能' do
@@ -155,7 +162,7 @@ describe 'ユーザ管理機能', type: :system do
       visit login_path
       fill_in 'session[email]', with: user_a.email
       fill_in 'session[password]', with: 'password'
-      click_on 'ログインする'
+      click_on 'ログ����ンする'
       visit user_path(user_a)
     end
 
@@ -163,7 +170,7 @@ describe 'ユーザ管理機能', type: :system do
       it 'ユーザを削除し、トップページにリダイレクトされること' do
         click_on '退会する'
         expect(current_path).to eq root_path
-        expect(page).to have_content 'ユーザ情報の削��が完了しました'
+        expect(page).to have_content 'ユーザ情報の削除が完了しました'
       end
     end
   end

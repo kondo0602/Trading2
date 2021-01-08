@@ -3,10 +3,8 @@ require 'rails_helper'
 describe 'コメント管理機能', type: :system do
   before do
     @user = build(:user)
-    @user.image = fixture_file_upload('/files/user.jpg')
     @user.save!
     @item = build(:item, user_id: @user.id)
-    @item.image = fixture_file_upload('/files/item1.jpg')
     @item.save!
     sleep 0.5
   end
