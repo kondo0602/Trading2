@@ -20,7 +20,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
                                        content: "Sample",
                                        brand: "Sample",
                                        size: "26cm",
-                                       status: "新品未使用"} }
+                                       status: "新品未使用" } }
     end
     assert_not flash.empty?
     assert_redirected_to root_url
@@ -50,7 +50,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
                                        content: "Sample",
                                        brand: "Sample",
                                        size: "26cm",
-                                       status: "新品未使用"} }
+                                       status: "新品未使用" } }
     end
     assert_not flash.empty?
     assert_redirected_to item_url(@item)

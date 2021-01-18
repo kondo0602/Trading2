@@ -24,7 +24,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post users_path, params: { user: { name: "Example User",
                                        email: "user@example.com",
                                        password: "foobar",
-                                       password_comfirmation: "foobar"} }
+                                       password_comfirmation: "foobar" } }
     end
     assert_not flash.empty?
     assert is_logged_in?
@@ -37,7 +37,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post users_path, params: { user: { name: " ",
                                        email: " ",
                                        password: " ",
-                                       password_comfirmation: " "} }
+                                       password_comfirmation: " " } }
     end
     assert flash.empty?
     assert_not is_logged_in?

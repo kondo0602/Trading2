@@ -25,7 +25,7 @@ user.save!
   user.image.attach(io: File.open('app/assets/images/profile.png'), filename: 'profile.png')
   user.save!
 end
-users = User.order(:created_at).take(2)
+users = User.order(:created_at).take(10)
 12.times do
   name = ['Nike AirForce1', 'NewBalance m1700', 'Reebok Pump'].sample
   content = '仙台の古着屋で購入しました。あまり履かなくなったので出品します。'
