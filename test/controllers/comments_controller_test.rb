@@ -13,7 +13,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_difference 'Comment.count', +1 do
       post item_comments_path(@item), params: { comment: { content: "Sample",
                                                            user_id: @user.id,
-                                                           item_id: @item.id } }
+                                                           item_id: @item.id} }
     end
     assert_not flash.empty?
   end
@@ -22,7 +22,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Comment.count' do
       post item_comments_path(@item), params: { comment: { content: "Sample",
                                                            user_id: @user.id,
-                                                           item_id: @item.id } }
+                                                           item_id: @item.id} }
     end
     assert_not flash.empty?
     assert_redirected_to login_url

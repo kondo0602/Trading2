@@ -27,8 +27,8 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = []
-    @currentUserEntry = Entry.where(user_id: current_user.id)
-    @currentUserEntry.each do |entry|
+    @current_user_entry = Entry.where(user_id: current_user.id)
+    @current_user_entry.each do |entry|
       @rooms += Room.where(id: entry.room_id)
       @rooms.uniq!
     end
