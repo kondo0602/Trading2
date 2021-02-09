@@ -59,13 +59,13 @@
       <%= render "likes/like", item: @item %>
     </div>
 
-    <div class="comment">
+    <div id="comments" class="comment">
       <p>コメント</p>
-      <%= render @comments %>
+      <%= render "comments/comment", comments: @comments %>
     </div>
 
     <% if current_user %>
-      <%= form_with(model: [@item, @comment], local: true) do |f| %>
+      <%= form_with(model: [@item, @comment], remote: true) do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
       <%= f.text_area :content, placeholder: "コメントを入力してください(255文字以内)" %>
       <%= f.submit "コメントする", class: "btn btn-primary" %>
