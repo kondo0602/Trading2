@@ -15,9 +15,10 @@ class User < ApplicationRecord
   validates :address,  presence: true
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  def already_liked?(item)
-    likes.exists?(item_id: item.id)
-  end
+  # def already_liked?(item, current_user)
+  #   l = Like.find_by(item_id: item.id, user_id: current_user.id)
+  #   binding.pry
+  # end
 
   # 渡された文字列のハッシュ値を返す
   def self.digest(string)

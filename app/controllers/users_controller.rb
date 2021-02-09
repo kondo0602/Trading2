@@ -13,27 +13,27 @@ class UsersController < ApplicationController
                  .paginate(page: params[:page])
     if logged_in?
       # 今操作しているユーザのエントリがあるか
-      @currentUserEntry = Entry.where(user_id: current_user.id)
+      @current_user_entry = Entry.where(user_id: current_user.id)
       # 詳細ページの持ち主であるユーザのエントリがあるか
-      @userEntry = Entry.where(user_id: @user.id)
+      @user_entry = Entry.where(user_id: @user.id)
       # Roomがあるかどうかの判定を行う変数に初期値を入れる
-      @isRoom == false
+      @is_room == false
       # 操作しているユーザ自身のユーザ詳細ページである場合
       if @user.id == current_user.id
         # ユーザのエントリが既にあればisRoomにtrueを入れる
-        @isRoom = true if @currentUserEntry
+        @is_room = true if @current_user_entry
       # 操作しているユーザ以外のユーザ詳細ページであればメッセージを送るための情報を渡す
       else
         # 操作しているユーザとそのページの持ち主のユーザのエントリで同じRoomIdを持つものがあるかループで探す
-        @currentUserEntry.each do |cu|
-          @userEntry.each do |u|
+        @current_user_entry.each do |cu|
+          @user_entry.each do |u|
             if cu.room_id == u.room_id
-              @isRoom = true
-              @roomId = cu.room_id
+              @is_room = true
+              @room_id = cu.room_id
             end
           end
         end
-        if @isRoom
+        if @is_room
         # まだその二人の間にルームがなければ空のルームとエントリを作成する
         else
           @room = Room.new

@@ -8,6 +8,7 @@ RSpec.describe Dm, type: :model do
     @entry_a = Entry.create(room_id: @room.id, user_id: @user_a.id)
     @entry_b = Entry.create(room_id: @room.id, user_id: @user_b.id)
     @dm = build(:dm, room_id: @room.id, user_id: @user_a.id)
+    sleep 1.0
   end
 
   describe 'バリデーション' do

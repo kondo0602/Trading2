@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'emailが255文字より長いとNG' do
-      @user.email = 'a' * 244 + '@example.com'
+      @user.email = "#{'a' * 244}@example.com"
       expect(@user.valid?).to eq(false)
     end
 

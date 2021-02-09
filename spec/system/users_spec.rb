@@ -162,7 +162,7 @@ describe 'ユーザ管理機能', type: :system do
       visit login_path
       fill_in 'session[email]', with: user_a.email
       fill_in 'session[password]', with: 'password'
-      click_on 'ログ����ンする'
+      click_on 'ログインする'
       visit user_path(user_a)
     end
 

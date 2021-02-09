@@ -17,17 +17,16 @@
       <p><%= link_to "DM一覧", rooms_path %></p>
       <p><%= button_to "退会する", @user, method: :delete, class: "btn btn-danger" , data: { confirm: "本当に退会してよろしいですか?" } %></p>
     <% else %>
-      <% if @isRoom == true %>
-        <p>
-          <a href="/rooms/<%= @roomId %>">DM画面へ</a>
-        <% else %>
-          <%= form_with(model: @room, local: true) do |f| %>
-          <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, :value=> @user.id %>
-        <% end %>
+      <% if @is_room == true %>
+        <a href="/rooms/<%= @roomId %>">DM画面へ</a>
+      <% else %>
+        <%= form_with(model: @room, local: true) do |f| %>
+        <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
         <%= f.submit "DMを送る" %>
       <% end %>
     <% end %>
   <% end %>
+<% end %>
 <% end %>
 </section>

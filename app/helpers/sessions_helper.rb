@@ -1,15 +1,12 @@
 module SessionsHelper
-
   # 渡されたユーザーでログインする
   def login(user)
-    #ユーザのブラウザの一時cookieに暗号化したuser.idを保存する
+    # ユーザのブラウザの一時cookieに暗号化したuser.idを保存する
     session[:user_id] = user.id
   end
 
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find_by(id:session[:user_id])
-    end
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   def current_user?(user)

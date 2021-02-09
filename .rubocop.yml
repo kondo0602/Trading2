@@ -1,0 +1,36 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.6.6
+
+  Rails:
+      Enabled: true
+
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'test/**/*'
+    - 'node_modules/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+    Max: 15
+
+Metrics/AbcSize:
+    Max: 40
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  
+Style/GuardClause:
+  Enabled: false

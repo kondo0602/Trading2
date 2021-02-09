@@ -55,24 +55,17 @@
       </table>
     </center>
 
-    <h3>いいね件数:
-      <%= @item.likes.count %></h3>
+    <div id="like_button">
+      <%= render "likes/like", item: @item %>
+    </div>
 
-    <% if current_user %>
-      <% if current_user.already_liked?(@item) %>
-        <%= button_to 'いいねを取り消す', item_like_path(@item), method: :delete, class: "btn btn-danger" %>
-      <% else %>
-        <%= button_to 'いいね', item_likes_path(@item), class: "btn btn-primary" %>
-      <% end %>
-    <% end %>
-
-    <div class="comment">
+    <div id="comments" class="comment">
       <p>コメント</p>
-      <%= render @comments %>
+      <%= render "comments/comment", comments: @comments %>
     </div>
 
     <% if current_user %>
-      <%= form_with(model: [@item, @comment], local: true) do |f| %>
+      <%= form_with(model: [@item, @comment], remote: true) do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
       <%= f.text_area :content, placeholder: "コメントを入力してください(255文字以内)" %>
       <%= f.submit "コメントする", class: "btn btn-primary" %>

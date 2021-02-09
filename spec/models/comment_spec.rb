@@ -9,6 +9,7 @@ RSpec.describe Comment, type: :model do
     @item.save!
     @comment = build(:comment, user_id: @user.id,
                                item_id: @item.id)
+    sleep 1.0
   end
 
   describe 'バリデーション' do
