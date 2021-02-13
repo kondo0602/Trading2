@@ -74,9 +74,9 @@
   <h2>条件から探す</h2>
   <%= form_with url:search_path , method: :get, local: true do |f| %>
   <p>キーワードから探す</p>
-  <%= f.text_field :search, value: @words, placeholder: "キーワードを入力してください" %>
+  <%= f.text_field :search, value: @keyword, placeholder: "キーワードを入力してください" %>
   <p>ブランドから探す</p>
-  <%= f.text_field :brand, placeholder: "商品のブランドを入力してください" %>
+  <%= f.text_field :brand, value: @brand, placeholder: "商品のブランドを入力してください" %>
   <p>サイズから探す</p>
   <%= f.select :size, [["24cm以下", "24cm以下"],["24.5cm", "24.5cm"],["25cm", "25cm"], ["25.5cm", "25.5cm"],["26cm", "26cm"],["26.5cm", "26.5cm"], ["27cm", "27cm"],["27.5cm", "27.5cm"],["28cm", "28cm"], ["28.5cm", "28.5cm"],["29cm", "29cm"],["29cm以上",
   "29cm以上"],], include_blank: "サイズを選択して下さい" %>

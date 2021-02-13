@@ -11,6 +11,9 @@ module Trading2
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    config.time_zone = 'Tokyo' #Time.zone.nowに日本時間を使用する
+    config.active_record.default_timezone = :local #DBの読み書きに日本時間を使用する
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

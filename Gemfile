@@ -42,6 +42,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jquery-rails'
 # コンソールでpryを使えるようにする
 gem 'pry-rails'
+# elasticsearchの導入
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

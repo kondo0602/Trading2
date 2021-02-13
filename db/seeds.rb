@@ -26,13 +26,13 @@ user.save!
   user.save!
 end
 users = User.order(:created_at).take(10)
-12.times do
-  name = ['Nike AirForce1', 'NewBalance m1700', 'Reebok Pump'].sample
-  content = '仙台の古着屋で購入しました。あまり履かなくなったので出品します。'
-  brand = %w[Nike adidas NewBalance Reebok converse BALENCIAGA].sample
-  size = %w[24cm以下 24.5cm 25cm 25.5cm 26cm 26.5cm 27cm 27.5cm 28cm 28.5cm 29cm 29cm以上].sample
-  status = %w[未使用新品 ほとんど使用していない やや使用感あり 使用感あり ジャンク品].sample
-  users.each do |user|
+users.each do |user|
+  12.times do
+    name = ['Nike AirForce1', 'NewBalance m1700', 'Reebok Pump', 'adidas Superstar'].sample
+    content = '仙台の古着屋で購入しました。あまり履かなくなったので出品します。'
+    brand = %w[Nike adidas NewBalance Reebok converse BALENCIAGA].sample
+    size = %w[24cm以下 24.5cm 25cm 25.5cm 26cm 26.5cm 27cm 27.5cm 28cm 28.5cm 29cm 29cm以上].sample
+    status = %w[未使用新品 ほとんど使用していない やや使用感あり 使用感あり ジャンク品].sample
     # create!とすると画像が添付されていないため、例外処理になりseedが作成できない
     @item = Item.create(name: name,
                         content: content,

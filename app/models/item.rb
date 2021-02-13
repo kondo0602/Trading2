@@ -13,6 +13,28 @@ class Item < ApplicationRecord
   validates :size, presence: true
   validates :status, presence: true
   validates :user_id, presence: true
+  # elasticsearchの検索対象とする
+  include Elasticsearch::Model
+  # レコード更新時にelasticsearchのドキュメントを更新するクエリを投げる
+  include Elasticsearch::Model::Callbacks
+  def self.search_message(keyword)
+    if keyword.present?
+      query = {
+        "size": 100,
+        "query": {
+          "bool": {
+            "should": [
+              { "match": { "name": keyword } },
+              { "match": { "content": keyword } }
+            ]
+          }
+        }
+      }
+      Item.__elasticsearch__.search(query).records.to_a
+    else
+      Item.all
+    end
+  end
 
   # 商品画像に関するバリデーション
   def image_presence
@@ -20,14 +42,6 @@ class Item < ApplicationRecord
       errors.add(:image, '商品画像はjpegまたはpng形式でアップロードしてください') unless image.content_type.in?(%('image/jpeg image/png'))
     else
       errors.add(:image, '商品画像をアップロードしてください')
-    end
-  end
-
-  def self.search(search)
-    if search
-      Item.where(['name LIKE ?', "%#{search}%"])
-    else
-      Item.all
     end
   end
 end
