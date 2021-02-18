@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :logged_in_user, only: %i[create new destroy]
-  before_action :correct_user, only: %i[edit update]
+  before_action :item_owner_user, only: %i[edit update]
 
   def index
     @items = Item.where(shitagaki: '0').paginate(page: params[:page], per_page: 24)
@@ -64,7 +64,6 @@ class ItemsController < ApplicationController
 
   def search
     @keyword = params[:search]
-    @brand = params[:brand]
     @items = Item.paginate(page: params[:page], per_page: 32).search_message(@keyword)
     @items -= Item.where.not(brand: params[:brand]) unless params[:brand] == ''
     @items -= Item.where.not(size: params[:size]) unless params[:size] == ''
@@ -83,9 +82,9 @@ class ItemsController < ApplicationController
                                  :shitagaki, :brand, :size, :status)
   end
 
-  def correct_user
+  def item_owner_user
     @item = current_user.items.find_by(id: params[:id])
-    if @item.nil?
+    if @item.present?
       redirect_to root_url
       flash[:danger] = 'そのページに対する編集権限がありません'
     end

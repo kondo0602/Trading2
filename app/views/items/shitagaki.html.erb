@@ -9,13 +9,13 @@
     <div class="col-md-8">
 
       <ul class="itemindex">
-        <% if current_user.liked_items.any? %>
+        <% if @items.any? %>
           <%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 
           <%= render @items %>
 
           <%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
         <% else %>
-          <p>まだお気に入りしている商品はありません。</p>
+          <p>まだ下書きはありません。</p>
         <% end %>
       </ul>

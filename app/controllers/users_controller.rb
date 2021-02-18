@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[edit update destroy]
-  before_action :correct_user, only: %i[edit update destroy]
+  before_action :authorized_user, only: %i[edit update destroy]
 
   def new
     @user = User.new
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
 
-  def correct_user
+  def authorized_user
     @user = User.find(params[:id])
     unless current_user?(@user)
       flash[:danger] = 'そのページに対する編集権限がありません'
